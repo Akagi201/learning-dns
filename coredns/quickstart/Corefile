@@ -1,0 +1,16 @@
+. {
+  proxy . 223.5.5.5:53 {
+    except example.org
+    protocol dns
+  }
+  prometheus # enable metrics
+  errors stdout # show errors
+  log stdout # show query logs
+}
+
+example.org {
+  file /root/coredns/zones/example.org
+  prometheus # enable metrics
+  errors stdout # show errors
+  log stdout # show query logs
+}
